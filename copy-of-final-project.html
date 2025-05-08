@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSAU Ladies Dormitory</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: white;
+      margin: 0;
+    }
+    header {
+      background: linear-gradient(to right, #007d04, #234d03);
+      color: #ffffff;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header h1 {  /* Yung 1 rem equivalent sya sa 16 px so yung 0.5 is equivalent into 8 thnx google napadali yung pag tatancha ko ng size*/
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav a, nav button {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    nav a:hover, nav button:hover {
+      text-decoration: underline;
+    }
+    #hero {
+      text-align: center;
+      padding: 6rem 1rem 2.5rem;
+      background-image: url('https://postimage.me/images/2025/04/14/WEB-PIC.jpg');
+      opacity: 90%;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      position: relative;
+      height: 500px;
+    }
+    #hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    #hero h2, #hero p {
+      position: relative;
+      z-index: 1;
+    }
+    section {
+      padding: 2.5rem 1rem;
+      background: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .section-title2 {
+      font-size: 5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-family: Arial;
+      color:#ffffff;
+    }
+    footer {
+      background: linear-gradient(to right, #006d04, #234d03);
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+    }
+    .header-logo img {
+      height: 50px;
+    }
+
+    .carousel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1.5rem;
+      overflow: hidden;
+    }
+    .carousel-window {
+      width: 100%;
+      max-width: 700px;
+      overflow: hidden;
+      border-radius: 1rem;
+      background-color: #fef3c7;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-track img {
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background-color: #f3f4f6;
+    }
+    .carousel-btn {
+      background: #006d04;
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      z-index: 1;
+    }
+    .carousel-btn:hover {
+      background-color: #034d03;
+    }
+
+  
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #007d04;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        display: none;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      nav ul li {
+        margin: 1rem 0;
+        text-align: center;
+      }
+      .header-logo img {
+        height: 40px;
+      }
+      header h1 {
+        font-size: 1.2rem;
+      }
+      .section-title2 {
+        font-size: 2.5rem;
+      }
+      #hero {
+        padding: 5rem 1rem 2rem;
+        height: 250px;
+      }
+      .carousel-track img {
+        height: 250px;
+      }
+    }
+
+    .about-lumpia-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 16px;
+    }
+    
+    .about-container {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    
+    .about-part {
+      flex: 1;
+      padding: 16px;
+      text-align: justify;
+    }
+    
+    .divider {
+      width: 2px;
+      background-color: #006d04;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .section-title2 {
+        font-size: 1rem;
+      }
+      #hero {
+        padding: 4rem 4rem 2rem;
+        height: 250px;
+        text-align: center;
+      }
+      nav ul {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+      }
+    
+      .divider {
+        width: 100%;
+        height: 2px;
+        margin: 16px 0;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="header-logo">
+        <img src="https://postimage.me/images/2025/04/09/REMOVED_BG.png" alt="PSAU Logo">
+        <h1>PSAU Ladies Dormitory</h1>
+      </div>
+      <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="#rooms">Rooms</a></li>
+              <li class="nav-item"><a class="nav-link" href="/FINALPROD/Gallery.html">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="/FINALPROD/booking.html">Book Now</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+              <li class="nav-item">
+                <a class="btn btn-outline-light rounded-circle ms-3" href="/FINALPROD/help_center.html" title="Help">
+                  ?
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero">
+    <h2 class="section-title2">Welcome to PSAU <br> Ladies Dormitory</h2>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <div class="about-container">
+        <div class="about-part">
+          <h3>History</h3>
+          <p>This edifice known as the Ladies Dormitory was totally renovated during the incumbency of Dr. Honorio M. Soriano Jr., University President, using government funds through the sponsorship of Congressman Carmelo " Jon " B. Lazatin II to provide conducive living quarters for out-of-town students.</p>
+          <p>Formerly reopened on January 28, 2019 during 4th founding anniversary of Pampanga State Agricultural University.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="about-part">
+          <h3>What we Offer</h3>
+          <p>We offer spacious rooms good for 8 people (4 double-deck beds), each with its own bathroom. The rates are very affordable, and the dorm is located inside the PSAU campus making it super convenient and hassle-free for students.</p>
+          <p>Inquiries are accepted only after you get your Certificate of Registration (COR) during enrollment. First-year students are given priority since they are just starting their journey and need more support and guidance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rooms">
+    <div class="container">
+      <h3 class="section-title">Our Rooms</h3>
+      <div class="carousel">
+        <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="carousel-window">
+          <div class="carousel-track">
+            <img src="https://i.postimg.cc/DznG30jk/10.jpg"/>
+            <img src="https://i.postimg.cc/yNjZ1KtJ/11.jpg"/>
+            <img src="https://i.postimg.cc/BnWDNM2v/7.jpg"/>
+            <img src="https://i.postimg.cc/qM6y89hY/8.jpg"/>
+          </div>
+        </div>
+        <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h3 class="section-title">Contact Us</h3>
+      <p>For inquiries, please email us at <a href="mailto:psaudorm@example.com" style="color: #15803d; text-decoration: underline;">psaudorm@example.com</a> or call 0912-345-6789.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <a href="#" onclick="showTermsPopup(event)" style="color: #ffffff; text-decoration: underline;">Terms & Privacy Policy</a>
+    </p>
+    <p>&copy; 2025 PSAU Ladies Dormitory. All rights reserved.</p>
+  </footer>
+
+  <div id="termsModal" style="display:none; position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center;">
+    <div style="background: white; padding: 2rem; max-width: 700px; margin: auto; border-radius: 10px; position: relative; max-height: 90vh; overflow-y: auto;">
+      <h3>Terms & Privacy Policy</h3>
+      <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+      <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the Privacy Policy Generator.</p>
+      
+      <h4>Interpretation and Definitions</h4>
+      <h5>Interpretation</h5>
+      <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+  
+      <h5>Definitions</h5>
+      <p>For the purposes of this Privacy Policy:</p>
+      <ul style="padding-left: 1.2rem;">
+        <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
+        <li><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</li>
+        <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to PSAU LADIES DORMITORY, Magalang Pampanga, Philippines.</li>
+        <li><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</li>
+        <li><strong>Country</strong> refers to: Philippines</li>
+        <li><strong>Device</strong> means any device that can access the Service such as a computer, a cellphone or a digital tablet.</li>
+        <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
+        <li><strong>Service</strong> refers to the Website.</li>
+        <li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</li>
+      </ul>
+  
+      <button onclick="closeTermsModal()" style="background-color: #006d04; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin-top: 1rem;">Agree and Continue</button>
+    </div>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let currentSlide = 0;
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-track img');
+    const totalSlides = slides.length;
+
+    function moveSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      else if (currentSlide >= totalSlides) currentSlide = 0;
+
+      const slideWidth = slides[0].clientWidth;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+
+    window.addEventListener('resize', () => {
+      const slideWidth = slides[0].clientWidth;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    });
+
+    function openTermsModal() {
+      document.getElementById("termsModal").style.display = "flex";
+    }
+
+    function showTermsPopup(event) {
+      event.preventDefault();
+      document.getElementById("termsModal").style.display = "flex";
+    }
+
+    function closeTermsModal() {
+      document.getElementById("termsModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
